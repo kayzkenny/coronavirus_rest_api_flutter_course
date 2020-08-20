@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  // Intl.defaultLocale = 'en_GB';
+  // await initializeDateFormatting(locale, filePath);
   runApp(MyApp());
 }
 
