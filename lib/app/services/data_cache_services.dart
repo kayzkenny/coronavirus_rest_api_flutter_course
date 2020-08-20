@@ -15,7 +15,13 @@ class DataCacheService {
     Map<Endpoint, EndpointData> values = {};
     Endpoint.values.forEach((endpoint) {
       final value = sharedPreferences.getInt(endpointValueKey(endpoint));
+      final dateString = sharedPreferences.getString(endpointDateKey(endpoint));
+      if (value != null && dateString != null) {
+        final date = DateTime.tryParse(dateString);
+        values[endpoint] = EndpointData(value: value, date: date);
+      }
     });
+    return EndpointsData(values: values);
   }
 
   Future<void> setData(EndpointsData endpointsData) async {
